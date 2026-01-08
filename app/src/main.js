@@ -1,30 +1,41 @@
-/* async function getData() {
+//OG CODE
+
+/* const APIURL = "https://api.jikan.moe/v4/anime?q=pokemon";
+async function getData(APIURL) {
   try {
-    const response = await fetch(`https://www.freetogame.com/api/games`);
-    if (response.status != 200) {
-      throw new Error(response);
-    } else {
-      const data = await response.json();
-      document.getElementById("api-response").textContent = data.name;
+    const response = await fetch(APIURL);
+    const data = await response.json(); //makes data into JSON object
+    for (let i = 0; i < data.data.length; i++) {
+      console.log(data.data[i].title);
+
+      const titles = data.data[i].title;
+      document.getElementById("movielist").insertAdjacentHTML(titles);
     }
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
 }
-getData();
- */
+getData(APIURL); */
 
-const URL = "https://official-joke-api.appspot.com/random_joke";
+const APIURL = "https://api.jikan.moe/v4/anime?q=pokemon";
 
-async function getData(URL) {
-  const response = await fetch(URL);
-  console.log(response);
-  /* try {
-    const response = await fetch(URL);
+async function getData(APIURL) {
+  try {
+    const response = await fetch(APIURL);
     const data = await response.json();
-    console.log(data.content);
+
+    const movielist = document.getElementById("movielist");
+
+    data.data.forEach((item) => {
+      movielist.insertAdjacentHTML(
+        "beforeend",
+        `<p>${item.title}</p>
+      <image>${item.img}</image>`
+      );
+    });
   } catch (error) {
     console.log(error);
-  } */
+  }
 }
-getData(URL);
+
+getData(APIURL);
