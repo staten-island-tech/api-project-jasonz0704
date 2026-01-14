@@ -29,9 +29,10 @@ async function getData(APIURL) {
     data.data.forEach((item) => {
       movielist.insertAdjacentHTML(
         "beforeend",
-        `<div class="bg-amber-200">
-        <p>${item.title}</p>
-        <img src="${item.images.jpg.image_url}"></img>
+        `<div id="card" class="bg-blue-400 flex items-center flex-col ">
+        <p class="">${item.title}</p>
+        <img src="${item.images.jpg.image_url}">
+        <p>${item.score}</p>
         </div>`
       );
     });
