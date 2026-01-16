@@ -47,9 +47,9 @@ function errorlogging(error) {
 document.getElementById("search").addEventListener("input", (e) => {
   const searcheditem = e.target.value.toLowerCase();
 
-  const filtereditems = pokemonmovies.filter(item =>
-    item.title.toLowerCase().includes(searchTerm)
+  const filtereditems = pokemonmovies.filter((item) =>
+    item.title.toLowerCase().includes(searcheditem)
   );
 
-  displaycards(filtereditems)
+  displaycards(filtereditems);
 });
